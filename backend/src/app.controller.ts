@@ -23,12 +23,13 @@ export class AppController {
 
   @UseGuards(AuthenticatedGaurd)
   @Get('demo')
-  getHello(): string {
-    return this.appService.getHello();
+  getHello(@Response() res): string {
+    return res.json('Hello World!');
   }
 
   @Get('logout')
   logout(@Request() req, @Response() res, @Next() next): any {
+    console.log('LOGOUT TRIGGERED')
     return req.logout(function (err) {
       if (err) {
         return next(err);
