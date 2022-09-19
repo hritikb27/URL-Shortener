@@ -10,7 +10,8 @@ import { NbThemeModule, NbLayoutModule, NbInputModule } from '@nebular/theme';
 import { NbEvaIconsModule } from '@nebular/eva-icons';
 import { DashboardModule } from './components/dashboard/dashboard.module';
 import { RouterModule } from '@angular/router'; // we also need angular router for Nebular to function properly
-import { NbSidebarModule, NbButtonModule } from '@nebular/theme';
+import { NbSidebarModule, NbButtonModule, NbCardModule, } from '@nebular/theme';
+import { LoginModule } from './components/login/login.module';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { NbSidebarModule, NbButtonModule } from '@nebular/theme';
     BrowserModule,
     AppRoutingModule,
     DashboardModule,
+    LoginModule,
     BrowserAnimationsModule,
     NbThemeModule.forRoot({ name: 'default' }),
     NbLayoutModule,
@@ -29,6 +31,7 @@ import { NbSidebarModule, NbButtonModule } from '@nebular/theme';
     NbSidebarModule.forRoot(), // NbSidebarModule.forRoot(), //if this is your app.module
     NbButtonModule,
     NbInputModule,
+    NbCardModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
