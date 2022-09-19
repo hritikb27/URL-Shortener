@@ -12,6 +12,7 @@ import { DashboardModule } from './components/dashboard/dashboard.module';
 import { RouterModule } from '@angular/router'; // we also need angular router for Nebular to function properly
 import { NbSidebarModule, NbButtonModule, NbCardModule, } from '@nebular/theme';
 import { LoginModule } from './components/login/login.module';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { LoginModule } from './components/login/login.module';
     NbButtonModule,
     NbInputModule,
     NbCardModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

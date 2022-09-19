@@ -2,19 +2,21 @@
     <div class="card-col">
         <nb-card size="giant" id="nbCard">
             <nb-card-header>Login</nb-card-header>
-            <div id="loginCred">
-                <nb-layout-column>
-                    <div class="inputFields text">
-                        <label>Email:</label>
-                        <input nbInput status="primary" type="email" />
-                    </div>
-                    <div class="inputFields">
-                        <label>Password:</label>
-                        <input nbInput status="primary" type="password" />
-                    </div>
-                </nb-layout-column>
-            </div>
-            <button nbButton hero status="primary" class="loginBtn">Login</button>
+            <form method="post" (submit)="login($event)" aria-labelledby="title">
+                <div id="loginCred">
+                    <nb-layout-column>
+                        <div class="inputFields text">
+                            <label>User:</label>
+                            <input nbInput value={{username}} status="primary" type="text" (keydown)="handleUsername($event)" />
+                        </div>
+                        <div class="inputFields">
+                            <label>Password:</label>
+                            <input nbInput status="primary" type="password" value={{password}} (keydown)="handlePassword($event)" />
+                        </div>
+                    </nb-layout-column>
+                </div>
+                <button nbButton hero status="primary" class="loginBtn">Login</button>
+            </form>
         </nb-card>
     </div>
 </div>

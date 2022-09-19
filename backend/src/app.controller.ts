@@ -1,12 +1,41 @@
-import { Controller, Get } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Request,
+  Response,
+  Next,
+  UseGuards,
+} from '@nestjs/common';
 import { AppService } from './app.service';
+import { AuthenticatedGaurd } from './auth/authenticated.gaurd';
+import { LocalAuthGaurd } from './auth/local-auth.gaurd';
 
 @Controller()
 export class AppController {
   constructor(private readonly appService: AppService) {}
 
-  @Get()
+  @UseGuards(LocalAuthGaurd)
+  @Post('login')
+  login(@Request() req): any {
+    return req.user;
+  }
+
+  @UseGuards(AuthenticatedGaurd)
+  @Get('demo')
   getHello(): string {
     return this.appService.getHello();
+  }
+
+  @Get('logout')
+  logout(@Request() req, @Response() res, @Next() next): any {
+    return req.logout(function (err) {
+      if (err) {
+        return next(err);
+      }
+      req.session.destroy(function (err) {
+        res.redirect('/'); //Inside a callback… bulletproof!
+      });
+    });
   }
 }
