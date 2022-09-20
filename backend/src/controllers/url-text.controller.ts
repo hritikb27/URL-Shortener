@@ -23,8 +23,8 @@ export class UrlTextController {
   }
 
   @Get('urls')
-  getUrls() {
-    return this.UrlService.findAll();
+  getUrls(@Query('userID') userID: number) {
+    return this.UrlService.findAll(userID);
   }
 
   @Get('shorturl')

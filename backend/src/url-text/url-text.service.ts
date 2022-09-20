@@ -23,8 +23,8 @@ export class UrlTextService {
     return this.urlRepository.findOneBy({ id });
   }
 
-  async findAll(): Promise<Url[] | undefined> {
-    return this.urlRepository.find();
+  async findAll(userID: number): Promise<Url[] | undefined> {
+    return this.urlRepository.find({ where: { userID } });
   }
 
   async incrementView(url: string, res) {
