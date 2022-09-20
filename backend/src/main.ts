@@ -11,7 +11,8 @@ async function bootstrap() {
   });
   app.use(
     session({
-      secret: 'this is a secret',
+      // should be stored in an env
+      secret: `${process.env.COOKIE_SECRET}`,
       resave: false,
       saveUninitialized: false,
       cookie: { maxAge: 3600000, httpOnly: false },

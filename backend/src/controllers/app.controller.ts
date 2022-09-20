@@ -7,9 +7,9 @@ import {
   Next,
   UseGuards,
 } from '@nestjs/common';
-import { AppService } from './app.service';
-import { AuthenticatedGaurd } from './auth/authenticated.gaurd';
-import { LocalAuthGaurd } from './auth/local-auth.gaurd';
+import { AppService } from '../app.service';
+import { AuthenticatedGaurd } from '../auth/authenticated.gaurd';
+import { LocalAuthGaurd } from '../auth/local-auth.gaurd';
 
 @Controller()
 export class AppController {
@@ -30,7 +30,6 @@ export class AppController {
 
   @Get('logout')
   logout(@Request() req, @Response() res, @Next() next): any {
-    console.log('LOGOUT TRIGGERED')
     return req.logout(function (err) {
       if (err) {
         return next(err);
