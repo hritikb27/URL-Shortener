@@ -10,10 +10,17 @@ import {
 } from "react-router-dom";
 import Login from './components/Login';
 import Dashboard from './components/Dashboard';
+import SignUp from './components/SignUp';
+import { createContext } from 'react';
+import ContextApi from './ContextApi';
 
 const router = createBrowserRouter([
   {
     path: "/",
+    element: <SignUp />,
+  },
+  {
+    path: "/login",
     element: <Login />,
   },
   {
@@ -25,7 +32,7 @@ const router = createBrowserRouter([
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <App />
   </React.StrictMode>
 );
 
