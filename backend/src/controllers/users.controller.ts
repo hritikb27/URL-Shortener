@@ -8,11 +8,12 @@ export class UsersController {
 
   @Post('addUser')
   addUser(
+    @Query('name') name: string,
     @Query('username') username: string,
     @Query('password') password: string,
   ): Observable<User> {
     console.log('Add user');
-    return this.userService.createUser({ username, password });
+    return this.userService.createUser({ name, username, password });
   }
 
   @Get('demo')

@@ -22,9 +22,10 @@ export class AppController {
   }
 
   @UseGuards(AuthenticatedGaurd)
-  @Get('demo')
-  getHello(@Response() res): string {
-    return res.json('Hello World!');
+  @Get('isAuthenticated')
+  getHello(@Response() res): boolean {
+    const bool = AuthenticatedGaurd;
+    return res.send(bool);
   }
 
   @Get('logout')

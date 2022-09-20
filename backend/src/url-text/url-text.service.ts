@@ -27,6 +27,21 @@ export class UrlTextService {
     return this.urlRepository.find();
   }
 
+  async incrementView(url: string, res) {
+    const shortUrl = `http://localhost:8080/url-text/${url}`;
+    const urlObj = await this.urlRepository.findOne({
+      where: {
+        shorturl: shortUrl,
+      },
+    });
+    const newUrlObj = {
+      ...urlObj,
+      views: urlObj.views + 1,
+    };
+    await this.urlRepository.save(newUrlObj);
+    res.redirect(urlObj.url);
+  }
+
   addUrl(urlObj: Url): Observable<Url | undefined> {
     const newUrl = this.urlRepository.create({
       userID: urlObj.userID,

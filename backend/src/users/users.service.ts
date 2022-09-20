@@ -6,6 +6,7 @@ import { Observable, from } from 'rxjs';
 
 export interface User {
   id?: number;
+  name: string;
   username: string;
   password: string;
 }
@@ -23,8 +24,8 @@ export class UsersService {
 
   createUser(user: User): Observable<User | undefined> {
     const newUser = this.usersRepository.create({
+      name: user.name,
       username: user.username,
-      name: user.username,
       password: user.password,
     });
     console.log(user);

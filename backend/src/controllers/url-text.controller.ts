@@ -1,4 +1,11 @@
-import { Controller, Post, Get, Query, Response } from '@nestjs/common';
+import {
+  Controller,
+  Post,
+  Get,
+  Query,
+  Request,
+  Response,
+} from '@nestjs/common';
 import { Observable } from 'rxjs';
 import { Url, UrlTextService } from 'src/url-text/url-text.service';
 
@@ -23,5 +30,11 @@ export class UrlTextController {
   @Get('shorturl')
   getShortUrls(@Query('id') id: number) {
     return this.UrlService.findOne(id);
+  }
+
+  @Get('/:id')
+  redirectUrl(@Request() req, @Response() res) {
+    console.log(req.params.id);
+    return this.UrlService.incrementView(req.params.id, res);
   }
 }
